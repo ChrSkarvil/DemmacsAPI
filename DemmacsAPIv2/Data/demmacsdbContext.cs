@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using DemmacsAPIv2.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace DemmacsAPIv2.Data
 {
-    public partial class demmacsdbContext : DbContext
+    public partial class DemmacsdbContext : DbContext
     {
-        public demmacsdbContext()
+        private readonly IConfiguration _config;
+        public DemmacsdbContext()
         {
         }
 
-        public demmacsdbContext(DbContextOptions<demmacsdbContext> options)
+        public DemmacsdbContext(DbContextOptions<DemmacsdbContext> options, IConfiguration config)
             : base(options)
         {
+            _config = config;
         }
 
         public virtual DbSet<Cart> Carts { get; set; } = null!;
@@ -41,7 +44,7 @@ namespace DemmacsAPIv2.Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySQL("server=localhost;uid=agchr;pwd=abc123;database=demmacsdb");
+                optionsBuilder.UseMySQL(_config.GetConnectionString("Demmacs"));
             }
         }
 

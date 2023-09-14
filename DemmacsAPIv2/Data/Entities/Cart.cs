@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DemmacsAPIv2.Data
+namespace DemmacsAPIv2.Data.Entities
 {
     public partial class Cart
     {
