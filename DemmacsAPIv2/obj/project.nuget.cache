@@ -1,14 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "jSsv/Mv4NNSnIMfYHIdGZ7LJwMDZB3BlT0OCGUYOxM3EFo1XpeT9y1tUgiQ8wEsPQxjpfuYX8OPm0HQnV/uIXQ==",
+  "dgSpecHash": "nGSx77C436HPmBHHXRGt8Afv9XmsFlKpA+kxFPka3PuWZgUzEn1PChsTI+emTX//6Wn/j8yGgIo2TOtKvnQfZQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\HFGF\\source\\repos\\DemmacsAPIv2\\DemmacsAPIv2\\DemmacsAPIv2.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\HFGF\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\HFGF\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\HFGF\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",
     "C:\\Users\\HFGF\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\HFGF\\.nuget\\packages\\k4os.compression.lz4\\1.3.5\\k4os.compression.lz4.1.3.5.nupkg.sha512",
     "C:\\Users\\HFGF\\.nuget\\packages\\k4os.compression.lz4.streams\\1.3.5\\k4os.compression.lz4.streams.1.3.5.nupkg.sha512",
     "C:\\Users\\HFGF\\.nuget\\packages\\k4os.hash.xxhash\\1.0.8\\k4os.hash.xxhash.1.0.8.nupkg.sha512",
+    "C:\\Users\\HFGF\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\HFGF\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.10\\microsoft.entityframeworkcore.6.0.10.nupkg.sha512",
     "C:\\Users\\HFGF\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.10\\microsoft.entityframeworkcore.abstractions.6.0.10.nupkg.sha512",
     "C:\\Users\\HFGF\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.10\\microsoft.entityframeworkcore.analyzers.6.0.10.nupkg.sha512",

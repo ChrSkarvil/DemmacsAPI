@@ -4,15 +4,18 @@ namespace DemmacsAPIv2.Repositories
 {
     public interface IProductRepository
     {
-        IEnumerable<Product> GetAll();
-        Product GetById(int productId);
+        Task<Product[]> GetAllProductsAsync();
+        Task<Product> GetProductAsync(int id);
 
-        void Insert(Product product);
+        void Add<T>(T entity) where T : class;
+        void Delete<T>(T entity) where T : class;
+
+        //void Insert(Product product);
 
         void Update(Product product);
 
-        void Delete(int productId);
+        //void Delete(int productId);
 
-        void Save();
+        Task<bool> SaveChangesAsync();
     }
 }

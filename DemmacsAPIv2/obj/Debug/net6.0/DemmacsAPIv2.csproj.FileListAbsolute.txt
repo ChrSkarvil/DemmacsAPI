@@ -66,3 +66,5 @@ C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Debug\net6.0\refint\Dem
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Debug\net6.0\DemmacsAPIv2.pdb
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Debug\net6.0\DemmacsAPIv2.genruntimeconfig.cache
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Debug\net6.0\ref\DemmacsAPIv2.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
