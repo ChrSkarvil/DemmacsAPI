@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "nGSx77C436HPmBHHXRGt8Afv9XmsFlKpA+kxFPka3PuWZgUzEn1PChsTI+emTX//6Wn/j8yGgIo2TOtKvnQfZQ==",
+  "dgSpecHash": "8K32KHlJnrESe2TeuSqFpuEn/gmYsFQUFdfjpcYVyUQsXzstrkRMWJLpxKX2PJ3dLQJtixu85m4cNNm+p5ytmQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\HFGF\\source\\repos\\DemmacsAPIv2\\DemmacsAPIv2\\DemmacsAPIv2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HFGF\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\HFGF\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\HFGF\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\HFGF\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",
     "C:\\Users\\HFGF\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\HFGF\\.nuget\\packages\\k4os.compression.lz4\\1.3.5\\k4os.compression.lz4.1.3.5.nupkg.sha512",

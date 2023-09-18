@@ -68,3 +68,5 @@ C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Debug\net6.0\DemmacsAPI
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Debug\net6.0\ref\DemmacsAPIv2.dll
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\bin\Debug\net6.0\libman.json
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\bin\Debug\net6.0\BCrypt.Net-Next.dll

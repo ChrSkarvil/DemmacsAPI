@@ -22,7 +22,7 @@ namespace DemmacsAPIv2.Data.Entities
         public int DepartmentId { get; set; }
         public int CountryId { get; set; }
         public string PostalCode { get; set; } = null!;
-        public int RoleId { get; set; }
+        public int? RoleId { get; set; }
 
         public virtual Country Country { get; set; } = null!;
         public virtual Department Department { get; set; } = null!;

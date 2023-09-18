@@ -21,8 +21,8 @@ namespace DemmacsAPIv2.Data.Entities
         public string Dimensions { get; set; } = null!;
         public decimal Weight { get; set; }
         public int CategoryId { get; set; }
-        public int ManufactureId { get; set; }
-        public byte[] Image { get; set; } = null!;
+        public int ManufacturerId { get; set; }
+        public byte[]? Image { get; set; } = null!;
 
         public virtual Category Category { get; set; } = null!;
         public virtual Manufacturer Manufacture { get; set; } = null!;

@@ -307,7 +307,8 @@ namespace DemmacsAPIv2.Data
 
                 entity.Property(e => e.RoleId)
                     .HasColumnType("int(11)")
-                    .HasColumnName("RoleID");
+                    .HasColumnName("RoleID")
+                    .HasDefaultValueSql("'NULL'");
 
                 entity.HasOne(d => d.Country)
                     .WithMany(p => p.Employees)
@@ -577,7 +578,7 @@ namespace DemmacsAPIv2.Data
 
                 entity.HasIndex(e => e.CategoryId, "CategoryID");
 
-                entity.HasIndex(e => e.ManufactureId, "ManufactureID");
+                entity.HasIndex(e => e.ManufacturerId, "ManufacturerID");
 
                 entity.Property(e => e.ProductId)
                     .HasColumnType("int(11)")
@@ -591,11 +592,12 @@ namespace DemmacsAPIv2.Data
 
                 entity.Property(e => e.Dimensions).HasMaxLength(30);
 
-                entity.Property(e => e.Image).HasColumnType("blob");
+                entity.Property(e => e.Image).HasColumnType("longblob")
+                .HasDefaultValueSql("'NULL'");
 
-                entity.Property(e => e.ManufactureId)
+                entity.Property(e => e.ManufacturerId)
                     .HasColumnType("int(11)")
-                    .HasColumnName("ManufactureID");
+                    .HasColumnName("ManufacturerID");
 
                 entity.Property(e => e.ProductName).HasMaxLength(45);
 
@@ -611,7 +613,7 @@ namespace DemmacsAPIv2.Data
 
                 entity.HasOne(d => d.Manufacture)
                     .WithMany(p => p.Products)
-                    .HasForeignKey(d => d.ManufactureId)
+                    .HasForeignKey(d => d.ManufacturerId)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("Product_ibfk_2");
             });
