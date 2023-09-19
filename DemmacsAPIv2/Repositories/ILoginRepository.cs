@@ -7,7 +7,7 @@ namespace DemmacsAPIv2.Repositories
     {
         Task<IEnumerable<LoginModel>> GetAllLoginsAsync();
         Task<LoginModel> GetLoginAsync(int id);
-        void Update(int id, LoginModelCreate login);
+        Task<Login> FindLogin(int id);
 
         void Add<T>(T entity) where T : class;
         void Delete<T>(T entity) where T : class;

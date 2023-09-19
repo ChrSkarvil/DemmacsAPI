@@ -16,6 +16,7 @@ builder.Services.AddDbContext<DemmacsdbContext>(options => options.UseMySQL(
 
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<ILoginRepository, LoginRepository>();
+builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();

@@ -94,18 +94,13 @@ namespace DemmacsAPIv2.Repositories
             return loginModel;
         }
 
-        public void Update(int id, LoginModelCreate login)
+        public async Task<Login> FindLogin(int id)
         {
-            var query = _context.Logins.Find(id);
-            if (query !=null)
-            {
-                query.Email = login.Email;
-                query.Password = login.Password;
-                query.UserType = login.UserType;
-                query.CustomerId = login.CustomerId;
-                query.EmployeeId = login.EmployeeId;
-            }
-
+            IQueryable<Login> query = _context.Logins;
+            // Query It
+            query = query
+                .Where(l => l.LoginId == id);
+            return await query.FirstOrDefaultAsync();
         }
 
         public async Task<bool> SaveChangesAsync()

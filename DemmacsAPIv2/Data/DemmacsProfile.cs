@@ -25,6 +25,10 @@ namespace DemmacsAPIv2.Data
 
             this.CreateMap<Login, LoginModelCreate>()
             .ReverseMap();
+
+            //CATEGORIES
+            this.CreateMap<Category, CategoryModel>()
+            .ReverseMap();
         }
     }
 }

@@ -84,8 +84,10 @@ namespace DemmacsAPIv2.Controllers
         {
             try
             {
-                var oldLogin = await _repository.GetLoginAsync(id);
-                if (oldLogin == null) return NotFound($"Could not find login {id}");
+                var oldLogin = await _repository.FindLogin(id);
+                if (oldLogin == null) return NotFound($"Could not find Login {id}");
+
+                model.Password = BC.HashPassword(model.Password);
 
                 _mapper.Map(model, oldLogin);
 
@@ -101,6 +103,30 @@ namespace DemmacsAPIv2.Controllers
             }
 
             return BadRequest();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var oldLogin = await _repository.FindLogin(id);
+                if (oldLogin == null) return NotFound();
+
+                _repository.Delete(oldLogin);
+
+                if (await _repository.SaveChangesAsync())
+                {
+                    return Ok($"Successfully Deleted Login {id}");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+            }
+            return BadRequest("Failed To Delete The Login");
         }
     }
 }
