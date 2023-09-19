@@ -2,6 +2,9 @@ using DemmacsAPIv2.Data;
 using DemmacsAPIv2.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +22,28 @@ builder.Services.AddTransient<ILoginRepository, LoginRepository>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer(jwtOptions =>
+    {
+        var key = builder.Configuration.GetValue<string>("JwtConfig:Key");
+        var keyBytes = Encoding.ASCII.GetBytes(key);
+        jwtOptions.SaveToken = true;
+        jwtOptions.TokenValidationParameters = new TokenValidationParameters
+        {
+            IssuerSigningKey = new SymmetricSecurityKey(keyBytes),
+            ValidateLifetime=true,
+            ValidateAudience=false,
+            ValidateIssuer=false
+        };
+    });
+
+builder.Services.AddSingleton(typeof(IJwtTokenManager), typeof(JwtTokenManager));
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,6 +55,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
