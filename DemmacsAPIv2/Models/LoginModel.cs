@@ -5,8 +5,9 @@
         public string Email { get; set; }
         public string Password { get; set; }
         public ulong UserType { get; set; }
-
         public string FullName { get; set; }
         public string? Role { get; set; }
+        public int? CustomerId { get; set; }
+        public int? EmployeeId { get; set; }
     }
 }

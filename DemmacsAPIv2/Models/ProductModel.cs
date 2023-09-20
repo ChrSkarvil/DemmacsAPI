@@ -9,5 +9,8 @@
         public decimal Weight { get; set; }
         public string CategoryName { get; set; }
         public string ManufacturerName { get; set; }
+        public int CategoryId { get; set; }
+        public int ManufacturerId { get; set; }
+        public byte[]? Image { get; set; } = null!;
     }
 }

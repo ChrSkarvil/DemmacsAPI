@@ -24,7 +24,7 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ProductModel[]>> Get()
+        public async Task<ActionResult<ProductModel[]>> GetProducts()
         {
             try
             {
@@ -40,7 +40,7 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductModel>> Get(int id)
+        public async Task<ActionResult<ProductModel>> GetProduct(int id)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ProductModelCreate>> Post(ProductModelCreate model)
+        public async Task<ActionResult<ProductModelCreate>> PostProduct(ProductModelCreate model)
         {
             try
             {
@@ -82,7 +82,7 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<ProductModelCreate>> Put(int id, ProductModelCreate model)
+        public async Task<ActionResult<ProductModelCreate>> PutProduct(int id, ProductModelCreate model)
         {
             try
             {
@@ -106,7 +106,7 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteProduct(int id)
         {
             try
             {

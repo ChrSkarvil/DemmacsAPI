@@ -2,10 +2,12 @@
 using DemmacsAPIv2.Data.Entities;
 using DemmacsAPIv2.Models;
 using DemmacsAPIv2.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DemmacsAPIv2.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : Controller
@@ -20,7 +22,7 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<CategoryModel[]>> Get()
+        public async Task<ActionResult<CategoryModel[]>> GetCategories()
         {
             try
             {
@@ -35,7 +37,7 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CategoryModel>> Get(int id)
+        public async Task<ActionResult<CategoryModel>> GetCategory(int id)
         {
             try
             {
@@ -55,7 +57,7 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CategoryModel>> Post(CategoryModel model)
+        public async Task<ActionResult<CategoryModel>> PostCategory(CategoryModel model)
         {
             try
             {
@@ -77,7 +79,7 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<CategoryModel>> Put(int id, CategoryModel model)
+        public async Task<ActionResult<CategoryModel>> PutCategory(int id, CategoryModel model)
         {
             try
             {
@@ -101,7 +103,7 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteCategory(int id)
         {
             try
             {

@@ -362,3 +362,11 @@ C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-ar
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\DemmacsAPIv2.pdb
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\DemmacsAPIv2.genruntimeconfig.cache
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\ref\DemmacsAPIv2.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\bin\Release\net6.0\linux-arm\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\bin\Release\net6.0\linux-arm\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\bin\Release\net6.0\linux-arm\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\bin\Release\net6.0\linux-arm\Microsoft.IdentityModel.Logging.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\bin\Release\net6.0\linux-arm\Microsoft.IdentityModel.Protocols.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\bin\Release\net6.0\linux-arm\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\bin\Release\net6.0\linux-arm\Microsoft.IdentityModel.Tokens.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\bin\Release\net6.0\linux-arm\System.IdentityModel.Tokens.Jwt.dll

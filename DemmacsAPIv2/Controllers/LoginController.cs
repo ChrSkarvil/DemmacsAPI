@@ -22,7 +22,7 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<LoginModel[]>> Get()
+        public async Task<ActionResult<LoginModel[]>> GetLogins()
         {
             try
             {
@@ -38,7 +38,7 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<LoginModel>> Get(int id)
+        public async Task<ActionResult<LoginModel>> GetLogin(int id)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<LoginModelCreate>> Post(LoginModelCreate model)
+        public async Task<ActionResult<LoginModelCreate>> PostLogin(LoginModelCreate model)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<LoginModelCreate>> Put(int id, LoginModelCreate model)
+        public async Task<ActionResult<LoginModelCreate>> PutLogin(int id, LoginModelCreate model)
         {
             try
             {
@@ -106,7 +106,7 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteLogin(int id)
         {
             try
             {

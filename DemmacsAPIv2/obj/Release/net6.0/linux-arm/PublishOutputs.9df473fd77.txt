@@ -318,9 +318,16 @@ C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-ar
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\K4os.Compression.LZ4.dll
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\K4os.Compression.LZ4.Streams.dll
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\K4os.Hash.xxHash.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\Microsoft.IdentityModel.Logging.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\Microsoft.IdentityModel.Protocols.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\Microsoft.OpenApi.dll
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\MySql.Data.dll
@@ -332,6 +339,7 @@ C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-ar
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\System.Configuration.ConfigurationManager.dll
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\System.Diagnostics.DiagnosticSource.dll
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\System.Drawing.Common.dll
+C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\System.Security.Permissions.dll
 C:\Users\HFGF\source\repos\DemmacsAPIv2\DemmacsAPIv2\obj\Release\net6.0\linux-arm\PubTmp\Out\System.Text.Encodings.Web.dll

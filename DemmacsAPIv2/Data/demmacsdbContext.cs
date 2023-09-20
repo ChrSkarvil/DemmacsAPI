@@ -74,6 +74,10 @@ namespace DemmacsAPIv2.Data
                     .HasColumnType("int(11)")
                     .HasDefaultValueSql("'1'");
 
+                entity.Property(e => e.Date)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("getdate()");
+
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Carts)
                     .HasForeignKey(d => d.CustomerId)

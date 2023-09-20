@@ -41,7 +41,9 @@ namespace DemmacsAPIv2.Repositories
                 {
                     Email = loginEntity.Email,
                     Password = loginEntity.Password,
-                    UserType = loginEntity.UserType
+                    UserType = loginEntity.UserType,
+                    CustomerId = loginEntity.CustomerId,
+                    EmployeeId = loginEntity.EmployeeId
                 };
 
                 if (loginEntity.UserType == 1)
