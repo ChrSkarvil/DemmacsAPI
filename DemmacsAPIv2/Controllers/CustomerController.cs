@@ -2,51 +2,50 @@
 using DemmacsAPIv2.Data.Entities;
 using DemmacsAPIv2.Models;
 using DemmacsAPIv2.Repositories;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DemmacsAPIv2.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : Controller
+    public class CustomerController : Controller
     {
-        private readonly ICategoryRepository _repository;
+        private readonly ICustomerRepository _repository;
         private readonly IMapper _mapper;
 
-        public CategoryController(ICategoryRepository repository, IMapper mapper)
+        public CustomerController(ICustomerRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<CategoryModel[]>> GetCategories()
+        public async Task<ActionResult<CustomerModel[]>> GetCustomers()
         {
             try
             {
-                var allCategories = await _repository.GetAllCategoriesAsync();
-                return _mapper.Map<CategoryModel[]>(allCategories);
+                var allCustomers = await _repository.GetAllCustomersAsync();
+                return _mapper.Map<CustomerModel[]>(allCustomers);
             }
             catch (Exception)
             {
 
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
             }
+
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<CategoryModel>> GetCategory(int id)
+        public async Task<ActionResult<CustomerModel>> GetCustomer(int id)
         {
             try
             {
 
-                var result = await _repository.GetCategoryAsync(id);
+                var result = await _repository.GetCustomerByIdAsync(id);
 
-                if (result == null) return NotFound($"Could not find Category {id}");
+                if (result == null) return NotFound($"Could not find customer {id}");
 
-                return _mapper.Map<CategoryModel>(result);
+                return _mapper.Map<CustomerModel>(result);
 
             }
             catch (Exception)
@@ -57,16 +56,16 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CategoryModel>> PostCategory(CategoryModel model)
+        public async Task<ActionResult<CustomerModelCreate>> PostCustomer(CustomerModelCreate model)
         {
             try
             {
-                //Create a new Product
-                var category = _mapper.Map<Category>(model);
-                _repository.Add(category);
+                //Create a new Customer
+                var customer = _mapper.Map<Customer>(model);
+                _repository.Add(customer);
                 if (await _repository.SaveChangesAsync())
                 {
-                    return Created($"/api/Category/{category.CategoryId}", _mapper.Map<CategoryModel>(category));
+                    return Created($"/api/Customer/{customer.CustomerId}", _mapper.Map<CustomerModelCreate>(customer));
                 }
             }
             catch (Exception)
@@ -79,18 +78,18 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<CategoryModel>> PutCategory(int id, CategoryModel model)
+        public async Task<ActionResult<CustomerModelCreate>> PutProduct(int id, CustomerModelCreate model)
         {
             try
             {
-                var oldCategory = await _repository.GetCategoryAsync(id);
-                if (oldCategory == null) return NotFound($"Could not find Category {id}");
+                var oldCustomer = await _repository.GetCustomerByIdAsync(id);
+                if (oldCustomer == null) return NotFound($"Could not find customer {id}");
 
-                _mapper.Map(model, oldCategory);
+                _mapper.Map(model, oldCustomer);
 
                 if (await _repository.SaveChangesAsync())
                 {
-                    return _mapper.Map<CategoryModel>(oldCategory);
+                    return _mapper.Map<CustomerModelCreate>(oldCustomer);
                 }
             }
             catch (Exception)
@@ -103,18 +102,18 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCategory(int id)
+        public async Task<IActionResult> DeleteCustomer(int id)
         {
             try
             {
-                var oldCategory = await _repository.GetCategoryAsync(id);
-                if (oldCategory == null) return NotFound();
+                var oldCustomer = await _repository.GetCustomerByIdAsync(id);
+                if (oldCustomer == null) return NotFound();
 
-                _repository.Delete(oldCategory);
+                _repository.Delete(oldCustomer);
 
                 if (await _repository.SaveChangesAsync())
                 {
-                    return Ok($"Successfully Deleted Category {id}");
+                    return Ok($"Successfully Deleted Customer {id}");
                 }
 
             }
@@ -123,7 +122,7 @@ namespace DemmacsAPIv2.Controllers
 
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
             }
-            return BadRequest("Failed To Delete The Category");
+            return BadRequest("Failed To Delete The Customer");
         }
     }
 }

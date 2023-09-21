@@ -49,6 +49,11 @@ builder.Services.AddTransient<ILoginRepository, LoginRepository>();
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<IPaymentRepository, PaymentRepository>();
 builder.Services.AddTransient<ICartRepository, CartRepository>();
+builder.Services.AddTransient<IStockProductRepository, StockProductRepository>();
+builder.Services.AddTransient<IProductColorRepository, ProductColorRepository>();
+builder.Services.AddTransient<IOrderItemRepository, OrderItemRepository>();
+builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
+builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddAuthentication(options =>

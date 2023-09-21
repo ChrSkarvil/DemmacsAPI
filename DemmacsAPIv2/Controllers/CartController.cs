@@ -70,7 +70,7 @@ namespace DemmacsAPIv2.Controllers
         {
             try
             {
-                //Create a new Product
+                //Create a new Cart
                 var cart = _mapper.Map<Cart>(model);
                 _repository.Add(cart);
                 if (await _repository.SaveChangesAsync())

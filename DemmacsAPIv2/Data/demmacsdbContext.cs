@@ -144,13 +144,17 @@ namespace DemmacsAPIv2.Data
 
                 entity.Property(e => e.CustomerAddr).HasMaxLength(65);
 
-                entity.Property(e => e.CustomerEmail).HasMaxLength(65);
+                entity.Property(e => e.CustomerEmail)
+                    .HasMaxLength(65)
+                    .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.CustomerFname)
                     .HasMaxLength(45)
                     .HasColumnName("CustomerFName");
 
-                entity.Property(e => e.CustomerPhone).HasColumnType("bigint(20)");
+                entity.Property(e => e.CustomerPhone)
+                    .HasColumnType("bigint(20)")
+                    .HasDefaultValueSql("'NULL'");
 
                 entity.Property(e => e.CustomerSname)
                     .HasMaxLength(45)
@@ -435,7 +439,6 @@ namespace DemmacsAPIv2.Data
 
                 entity.HasIndex(e => e.PaymentId, "PaymentID");
 
-                entity.HasIndex(e => e.ProductId, "ProductID");
 
                 entity.Property(e => e.OrderId)
                     .HasColumnType("int(11)")
@@ -456,10 +459,6 @@ namespace DemmacsAPIv2.Data
                 entity.Property(e => e.PaymentId)
                     .HasColumnType("int(11)")
                     .HasColumnName("PaymentID");
-
-                entity.Property(e => e.ProductId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("ProductID");
 
                 entity.Property(e => e.TotalPrice).HasPrecision(10);
 
@@ -486,12 +485,6 @@ namespace DemmacsAPIv2.Data
                     .HasForeignKey(d => d.PaymentId)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("Order_ibfk_3");
-
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.ProductId)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("Order_ibfk_1");
             });
 
             modelBuilder.Entity<Orderitem>(entity =>

@@ -9,7 +9,6 @@ namespace DemmacsAPIv2.Data.Entities
         {
             Carts = new HashSet<Cart>();
             Orderitems = new HashSet<Orderitem>();
-            Orders = new HashSet<Order>();
             ProductColors = new HashSet<ProductColor>();
             StockProducts = new HashSet<StockProduct>();
         }
@@ -28,7 +27,6 @@ namespace DemmacsAPIv2.Data.Entities
         public virtual Manufacturer Manufacture { get; set; } = null!;
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<Orderitem> Orderitems { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<ProductColor> ProductColors { get; set; }
         public virtual ICollection<StockProduct> StockProducts { get; set; }
     }

@@ -72,12 +72,12 @@ namespace DemmacsAPIv2.Controllers
         {
             try
             {
-                //Create a new Product
+                //Create a new Payment
                 var product = _mapper.Map<Payment>(model);
                 _repository.Add(product);
                 if (await _repository.SaveChangesAsync())
                 {
-                    return Created($"/api/Product/{product.PaymentId}", _mapper.Map<PaymentModelCreate>(product));
+                    return Created($"/api/Payment/{product.PaymentId}", _mapper.Map<PaymentModelCreate>(product));
                 }
             }
             catch (Exception)
