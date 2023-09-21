@@ -4,8 +4,8 @@ namespace DemmacsAPIv2.Models
 {
     public class OrderModel
     {
-        public string ProductName { get; set; }
-        public int Quantity { get; set; }
+        //public string ProductName { get; set; }
+        //public int Quantity { get; set; }
         public string PaymentMethod { get; set; }
         public string PaymentDate { get; set; }
         public string CustomerName { get; set; }
@@ -21,6 +21,8 @@ namespace DemmacsAPIv2.Models
         public int PaymentId { get; set; }
         public int CustomerId { get; set; }
         public int DeliveryId { get; set; }
+
+        public List<OrderItemModel> OrderItems { get; set; }
 
     }
 }

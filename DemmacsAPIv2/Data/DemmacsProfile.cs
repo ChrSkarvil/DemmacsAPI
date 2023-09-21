@@ -78,8 +78,6 @@ namespace DemmacsAPIv2.Data
 
             //ORDERS
             this.CreateMap<Order, OrderModel>()
-            .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.OrderItem.Product.ProductName))
-            .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.OrderItem.Quantity))
             .ForMember(dest => dest.PaymentMethod, opt => opt.MapFrom(src => src.Payment.PaymentMethod))
             .ForMember(dest => dest.PaymentDate, opt => opt.MapFrom(src => src.Payment.PaymentDate))
             .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => $"{src.Customer.CustomerFname} {src.Customer.CustomerSname}"))
@@ -89,7 +87,9 @@ namespace DemmacsAPIv2.Data
             .ForMember(dest => dest.DeliveryFee, opt => opt.MapFrom(src => src.Delivery.DeliveryFee))
             .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Delivery.Country.CountryName))
             .ForMember(dest => dest.PostalCode, opt => opt.MapFrom(src => src.Delivery.PostalCode))
-            .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Delivery.PostalCodeNavigation.City));
+            .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Delivery.PostalCodeNavigation.City))
+            .ForMember(dest => dest.OrderItems, opt => opt.MapFrom(src => src.Orderitems));
+
 
             this.CreateMap<Order, OrderModelCreate>()
             .ReverseMap();

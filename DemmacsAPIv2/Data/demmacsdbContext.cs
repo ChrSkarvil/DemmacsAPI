@@ -435,10 +435,7 @@ namespace DemmacsAPIv2.Data
 
                 entity.HasIndex(e => e.DeliveryId, "DeliveryID");
 
-                entity.HasIndex(e => e.OrderItemId, "OrderItemID");
-
                 entity.HasIndex(e => e.PaymentId, "PaymentID");
-
 
                 entity.Property(e => e.OrderId)
                     .HasColumnType("int(11)")
@@ -452,15 +449,13 @@ namespace DemmacsAPIv2.Data
                     .HasColumnType("int(11)")
                     .HasColumnName("DeliveryID");
 
-                entity.Property(e => e.OrderItemId)
-                    .HasColumnType("int(11)")
-                    .HasColumnName("OrderItemID");
+                entity.Property(e => e.OrderDate)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("'current_timestamp()'");
 
                 entity.Property(e => e.PaymentId)
                     .HasColumnType("int(11)")
                     .HasColumnName("PaymentID");
-
-                entity.Property(e => e.TotalPrice).HasPrecision(10);
 
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
@@ -474,12 +469,6 @@ namespace DemmacsAPIv2.Data
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("Order_ibfk_5");
 
-                entity.HasOne(d => d.OrderItem)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.OrderItemId)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("Order_ibfk_2");
-
                 entity.HasOne(d => d.Payment)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.PaymentId)
@@ -491,11 +480,17 @@ namespace DemmacsAPIv2.Data
             {
                 entity.ToTable("orderitem");
 
+                entity.HasIndex(e => e.OrderId, "OrderID");
+
                 entity.HasIndex(e => e.ProductId, "ProductID");
 
                 entity.Property(e => e.OrderItemId)
                     .HasColumnType("int(11)")
                     .HasColumnName("OrderItemID");
+
+                entity.Property(e => e.OrderId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("OrderID");
 
                 entity.Property(e => e.Price).HasPrecision(10);
 
@@ -506,6 +501,12 @@ namespace DemmacsAPIv2.Data
                 entity.Property(e => e.Quantity)
                     .HasColumnType("int(11)")
                     .HasDefaultValueSql("'1'");
+
+                entity.HasOne(d => d.Order)
+                    .WithMany(p => p.Orderitems)
+                    .HasForeignKey(d => d.OrderId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("OrderID");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.Orderitems)

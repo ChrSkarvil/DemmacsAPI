@@ -28,35 +28,68 @@ namespace DemmacsAPIv2.Repositories
         public async Task<Order[]> GetAllOrdersAsync()
         {
             var query = _context.Orders
-                .Include(o => o.OrderItem)
-                .Include(o => o.OrderItem.Product)
+                .Include(o => o.Orderitems)
+                    .ThenInclude(pr => pr.Product)
                 .Include(p => p.Payment)
                 .Include(c => c.Customer)
-                .Include(c => c.Delivery)
-                .Include(c => c.Delivery.Country)
-                .Include(c => c.Delivery.PostalCodeNavigation);
+                .Include(d => d.Delivery)
+                .Include(dc => dc.Delivery.Country)
+                .Include(p => p.Delivery.PostalCodeNavigation);
 
             return await query.ToArrayAsync();
         }
 
-        public Task<Order> GetOrderByIdAsync(int id)
+        public async Task<Order> GetOrderByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            IQueryable<Order> query = _context.Orders;
+            // Query It
+            query = query
+                .Include(o => o.Orderitems)
+                    .ThenInclude(pr => pr.Product)
+                .Include(p => p.Payment)
+                .Include(c => c.Customer)
+                .Include(d => d.Delivery)
+                .Include(dc => dc.Delivery.Country)
+                .Include(p => p.Delivery.PostalCodeNavigation)
+                .Where(o => o.OrderId == id);
+            return await query.FirstOrDefaultAsync();
         }
 
-        public Task<IEnumerable<Order>> GetOrdersByCustomerIdAsync(int id)
+        public async Task<IEnumerable<Order>> GetOrdersByCustomerIdAsync(int id)
         {
-            throw new NotImplementedException();
+            IQueryable<Order> query = _context.Orders;
+            // Query It
+            query = query
+                .Include(o => o.Orderitems)
+                    .ThenInclude(pr => pr.Product)
+                .Include(p => p.Payment)
+                .Include(c => c.Customer)
+                .Include(d => d.Delivery)
+                .Include(dc => dc.Delivery.Country)
+                .Include(p => p.Delivery.PostalCodeNavigation)
+                .Where(o => o.CustomerId == id);
+            return await query.ToListAsync();
         }
 
-        public Task<IEnumerable<Order>> GetOrdersByDeliveryIdAsync(int id)
+        public async Task<IEnumerable<Order>> GetOrdersByDeliveryIdAsync(int id)
         {
-            throw new NotImplementedException();
+            IQueryable<Order> query = _context.Orders;
+            // Query It
+            query = query
+                .Include(o => o.Orderitems)
+                    .ThenInclude(pr => pr.Product)
+                .Include(p => p.Payment)
+                .Include(c => c.Customer)
+                .Include(d => d.Delivery)
+                .Include(dc => dc.Delivery.Country)
+                .Include(p => p.Delivery.PostalCodeNavigation)
+                .Where(o => o.DeliveryId == id);
+            return await query.ToListAsync();
         }
 
-        public Task<bool> SaveChangesAsync()
+        public async Task<bool> SaveChangesAsync()
         {
-            throw new NotImplementedException();
+            return (await _context.SaveChangesAsync()) > 0;
         }
     }
 }
