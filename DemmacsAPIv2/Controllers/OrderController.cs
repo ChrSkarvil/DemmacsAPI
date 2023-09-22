@@ -97,5 +97,52 @@ namespace DemmacsAPIv2.Controllers
 
             return BadRequest();
         }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<OrderModelCreate>> PutOrder(int id, OrderModelCreate model)
+        {
+            try
+            {
+                var oldOrder = await _repository.GetOrderByIdAsync(id);
+                if (oldOrder == null) return NotFound($"Could not find order {id}");
+
+                _mapper.Map(model, oldOrder);
+
+                if (await _repository.SaveChangesAsync())
+                {
+                    return _mapper.Map<OrderModelCreate>(oldOrder);
+                }
+            }
+            catch (Exception)
+            {
+
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+            }
+
+            return BadRequest();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteOrder(int id)
+        {
+            try
+            {
+                var oldOrder = await _repository.GetOrderByIdAsync(id);
+                if (oldOrder == null) return NotFound();
+
+                _repository.Delete(oldOrder);
+
+                if (await _repository.SaveChangesAsync())
+                {
+                    return Ok($"Successfully Deleted Order {id}");
+                }
+
+            }
+            catch (Exception)
+            {
+
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+            }
+            return BadRequest("Failed To Delete The Order");
+        }
     }
 }

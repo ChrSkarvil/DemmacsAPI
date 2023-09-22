@@ -93,6 +93,15 @@ namespace DemmacsAPIv2.Data
 
             this.CreateMap<Order, OrderModelCreate>()
             .ReverseMap();
+
+            //DELIVERY
+            this.CreateMap<Delivery, DeliveryModel>()
+            .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.PostalCodeNavigation.City))
+            .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Country.CountryName));
+
+            this.CreateMap<Delivery, DeliveryModelCreate>()
+            .ReverseMap();
+
         }
     }
 }
