@@ -63,17 +63,17 @@ namespace DemmacsAPIv2.Repositories
             return loginModels;
         }
 
-        public async Task<LoginModel> GetLoginAsync(int id)
+        public async Task<LoginModel> GetLoginAsync(string email)
         {
             var loginEntity = await _context.Logins
                 .Include(logins => logins.Customer)
                 .Include(logins => logins.Employee)
                 .Include(employee => employee.Employee.Role)
-                .FirstOrDefaultAsync(login => login.LoginId == id);
+                .FirstOrDefaultAsync(login => login.Email == email);
 
             if (loginEntity == null)
             {
-                return null; // Handle the case where the login is not found
+                return null;
             }
 
             var loginModel = new LoginModel
@@ -81,6 +81,8 @@ namespace DemmacsAPIv2.Repositories
                 Email = loginEntity.Email,
                 Password = loginEntity.Password,
                 UserType = loginEntity.UserType,
+                CustomerId = loginEntity.CustomerId,
+                EmployeeId = loginEntity.EmployeeId
             };
             if (loginEntity.UserType == 1)
             {
@@ -96,12 +98,12 @@ namespace DemmacsAPIv2.Repositories
             return loginModel;
         }
 
-        public async Task<Login> FindLogin(int id)
+        public async Task<Login> FindLogin(string email)
         {
             IQueryable<Login> query = _context.Logins;
             // Query It
             query = query
-                .Where(l => l.LoginId == id);
+                .Where(l => l.Email == email);
             return await query.FirstOrDefaultAsync();
         }
 

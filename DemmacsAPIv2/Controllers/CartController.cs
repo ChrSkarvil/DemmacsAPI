@@ -37,6 +37,7 @@ namespace DemmacsAPIv2.Controllers
         [HttpGet("search")]
         public async Task<ActionResult> SearchCart(int? cartId, int? customerId)
         {
+            //Search by cartID
             if (cartId.HasValue)
             {
                 var cart = await _repository.GetCartByIdAsync(cartId.Value);
@@ -48,6 +49,7 @@ namespace DemmacsAPIv2.Controllers
                 var cartModel = _mapper.Map<CartModel>(cart);
                 return Ok(cartModel);
             }
+            //Search by cutsomerId
             else if (customerId.HasValue)
             {
                 var carts = await _repository.GetCartsByCustomerIdAsync(customerId.Value);

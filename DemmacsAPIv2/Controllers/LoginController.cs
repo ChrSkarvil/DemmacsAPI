@@ -37,15 +37,15 @@ namespace DemmacsAPIv2.Controllers
 
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<LoginModel>> GetLogin(int id)
+        [HttpGet("{email}")]
+        public async Task<ActionResult<LoginModel>> GetLogin(string email)
         {
             try
             {
 
-                var result = await _repository.GetLoginAsync(id);
+                var result = await _repository.GetLoginAsync(email);
 
-                if (result == null) return NotFound($"Could not find login {id}");
+                if (result == null) return NotFound($"Could not find login {email}");
 
                 return _mapper.Map<LoginModel>(result);
 
@@ -63,6 +63,7 @@ namespace DemmacsAPIv2.Controllers
             try
             {
                 //Create a new Login
+
                 var login = _mapper.Map<Login>(model);
                 login.Password = BC.HashPassword(model.Password);
                 _repository.Add(login);
@@ -79,13 +80,13 @@ namespace DemmacsAPIv2.Controllers
             return BadRequest();
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<LoginModelCreate>> PutLogin(int id, LoginModelCreate model)
+        [HttpPut("{email}")]
+        public async Task<ActionResult<LoginModelCreate>> PutLogin(string email, LoginModelCreate model)
         {
             try
             {
-                var oldLogin = await _repository.FindLogin(id);
-                if (oldLogin == null) return NotFound($"Could not find Login {id}");
+                var oldLogin = await _repository.FindLogin(email);
+                if (oldLogin == null) return NotFound($"Could not find Login {email}");
 
                 model.Password = BC.HashPassword(model.Password);
 
@@ -106,18 +107,18 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteLogin(int id)
+        public async Task<IActionResult> DeleteLogin(string email)
         {
             try
             {
-                var oldLogin = await _repository.FindLogin(id);
+                var oldLogin = await _repository.FindLogin(email);
                 if (oldLogin == null) return NotFound();
 
                 _repository.Delete(oldLogin);
 
                 if (await _repository.SaveChangesAsync())
                 {
-                    return Ok($"Successfully Deleted Login {id}");
+                    return Ok($"Successfully Deleted Login {email}");
                 }
 
             }

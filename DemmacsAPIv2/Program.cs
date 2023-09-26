@@ -6,8 +6,37 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddCors(c =>
+{
+    c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000/",
+                          "https://localhost:3000/",
+                          "http://localhost:3000",
+                          "https://localhost:3000",
+
+                          "http://192.168.1.139:3000/",
+                          "https://192.168.1.139:3000/",
+                          "http://192.168.1.139:3000",
+                          "https://192.168.1.139:3000",
+
+                          "http://192.168.1.139/",
+                          "https://192.168.1.139/",
+                          "http://192.168.1.139",
+                          "https://192.168.1.139"));
+});
+
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(5001); // to listen for incoming http connection on port 5001
+    options.ListenAnyIP(7001, configure => configure.UseHttps()); // to listen for incoming https connection on port 7001
+});
 
 // Add services to the container.
 
@@ -90,8 +119,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
+app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
