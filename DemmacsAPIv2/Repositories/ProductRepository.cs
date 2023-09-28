@@ -48,6 +48,17 @@ namespace DemmacsAPIv2.Repositories
             return await query.FirstOrDefaultAsync();
         }
 
+        public async Task<IEnumerable<Product>> GetProductsByCategoryAsync(int id)
+        {
+            IQueryable<Product> query = _context.Products;
+            // Query It
+            query = query
+                .Include(product => product.Category)
+                .Include(product => product.Manufacture)
+                .Where(p => p.CategoryId == id);
+            return await query.ToListAsync();
+        }
+
         public async Task<bool> SaveChangesAsync()
         {
             // Only return success if at least one row was changed

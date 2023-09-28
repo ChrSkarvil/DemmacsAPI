@@ -12,10 +12,11 @@ using Microsoft.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 builder.Services.AddCors(c =>
 {
-    c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000/",
+    c.AddPolicy(name: MyAllowSpecificOrigins, options => options.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000/",
                           "https://localhost:3000/",
                           "http://localhost:3000",
                           "https://localhost:3000",
@@ -25,10 +26,17 @@ builder.Services.AddCors(c =>
                           "http://192.168.1.139:3000",
                           "https://192.168.1.139:3000",
 
-                          "http://192.168.1.139/",
-                          "https://192.168.1.139/",
-                          "http://192.168.1.139",
-                          "https://192.168.1.139"));
+                          "http://192.168.1.1:3000/",
+                          "https://192.168.1.1:3000/",
+                          "http://192.168.1.1:3000",
+                          "https://192.168.1.1:3000",
+
+                          "http://192.168.1.110:3000/",
+                          "https://192.168.1.110:3000/",
+                          "http://192.168.1.110:3000",
+                          "https://192.168.1.110:3000"
+
+));
 });
 
 
@@ -84,6 +92,7 @@ builder.Services.AddTransient<IOrderItemRepository, OrderItemRepository>();
 builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 builder.Services.AddTransient<IDeliveryRepository, DeliveryRepository>();
+builder.Services.AddTransient<IManufacturerRepository, ManufacturerRepository>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddAuthentication(options =>
@@ -119,9 +128,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+app.UseCors(MyAllowSpecificOrigins);
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 

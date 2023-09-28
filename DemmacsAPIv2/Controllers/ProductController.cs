@@ -39,25 +39,39 @@ namespace DemmacsAPIv2.Controllers
 
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<ProductModel>> GetProduct(int id)
+        [HttpGet("search")]
+        public async Task<ActionResult> SearchCart(int? productId, int? categoryId)
         {
-            try
+            //Search by productId
+            if (productId.HasValue)
             {
+                var product = await _repository.GetProductAsync(productId.Value);
+                if (product == null)
+                {
+                    return NotFound("Product not found.");
+                }
 
-                var result = await _repository.GetProductAsync(id);
-
-                if (result == null) return NotFound($"Could not find product {id}");
-
-                return _mapper.Map<ProductModel>(result);
-
+                var productModel = _mapper.Map<ProductModel>(product);
+                return Ok(productModel);
             }
-            catch (Exception)
+            //Search by categoryId
+            else if (categoryId.HasValue)
             {
+                var products = await _repository.GetProductsByCategoryAsync(categoryId.Value);
+                if (!products.Any())
+                {
+                    return NotFound("No products found for the category.");
+                }
 
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
+                var productModels = _mapper.Map<IEnumerable<ProductModel>>(products);
+                return Ok(productModels);
+            }
+            else
+            {
+                return BadRequest("Please enter either ProductId or CategoryId.");
             }
         }
+
 
         [HttpPost]
         public async Task<ActionResult<ProductModelCreate>> PostProduct(ProductModelCreate model)

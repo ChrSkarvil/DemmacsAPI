@@ -102,6 +102,9 @@ namespace DemmacsAPIv2.Data
             this.CreateMap<Delivery, DeliveryModelCreate>()
             .ReverseMap();
 
+            //MANUFACTURER
+            this.CreateMap<Manufacturer, ManufacturerModel>()
+            .ReverseMap();
         }
     }
 }

@@ -7,7 +7,7 @@ namespace DemmacsAPIv2.Repositories
     {
         Task<Product[]> GetAllProductsAsync();
         Task<Product> GetProductAsync(int id);
-
+        Task<IEnumerable<Product>> GetProductsByCategoryAsync(int id);
         void Add<T>(T entity) where T : class;
         void Delete<T>(T entity) where T : class;
         Task<bool> SaveChangesAsync();

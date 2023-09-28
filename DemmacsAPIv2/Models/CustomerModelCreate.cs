@@ -2,6 +2,7 @@
 {
     public class CustomerModelCreate
     {
+        public int? CustomerID { get; set; }
         public string CustomerFname { get; set; } = null!;
         public string CustomerSname { get; set; } = null!;
         public string CustomerAddr { get; set; } = null!;

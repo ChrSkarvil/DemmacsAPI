@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DemmacsAPIv2.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : Controller

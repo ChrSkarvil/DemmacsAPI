@@ -2,6 +2,7 @@
 {
     public class ProductModelCreate
     {
+        public int ProductID { get; set; }
         public string ProductName { get; set; } = null!;
         public decimal ProductPrice { get; set; }
         public string Description { get; set; } = null!;
