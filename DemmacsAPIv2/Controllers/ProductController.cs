@@ -106,12 +106,28 @@ namespace DemmacsAPIv2.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<ProductModelCreate>> PutProduct(int id, ProductModelCreate model)
+        [Consumes("multipart/form-data")]
+        public async Task<ActionResult<ProductModelCreate>> PutProduct(int id, [FromForm] ProductModelCreate model, [FromForm] IFormFile? ImageFile)
         {
             try
             {
                 var oldProduct = await _repository.GetProductAsync(id);
-                if (oldProduct == null) return NotFound($"Could not find product {id}");
+
+                // Check if the product exists
+                if (oldProduct == null)
+                {
+                    return NotFound($"Could not find product {id}");
+                }
+
+                // If an image file is provided, update the image and filename
+                if (ImageFile != null && ImageFile.Length > 0)
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        await ImageFile.CopyToAsync(stream);
+                        oldProduct.Image = stream.ToArray(); // Update the image with the new content
+                    }
+                }
 
                 _mapper.Map(model, oldProduct);
 
@@ -122,7 +138,6 @@ namespace DemmacsAPIv2.Controllers
             }
             catch (Exception)
             {
-
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
             }
 
