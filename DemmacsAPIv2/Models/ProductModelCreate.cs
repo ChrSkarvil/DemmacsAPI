@@ -10,5 +10,8 @@
         public int CategoryID { get; set; }
         public int ManufacturerID { get; set; }
         public byte[]? Image { get; set; }
+        public string? ImageFile { get; set; }
+
+
     }
 }

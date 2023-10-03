@@ -74,13 +74,24 @@ namespace DemmacsAPIv2.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<ProductModelCreate>> PostProduct(ProductModelCreate model)
+        [Consumes("multipart/form-data")]
+        public async Task<ActionResult<ProductModelCreate>> PostProduct([FromForm] ProductModelCreate model, [FromForm] IFormFile? ImageFile)
         {
             try
             {
-                //Create a new Product
+                if (ImageFile != null && ImageFile.Length > 0)
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        await ImageFile.CopyToAsync(stream);
+                        model.Image = stream.ToArray(); // Convert the image to byte[]
+                    }
+                }
+
                 var product = _mapper.Map<Product>(model);
+
                 _repository.Add(product);
+
                 if (await _repository.SaveChangesAsync())
                 {
                     return Created($"/api/Product/{product.ProductId}", _mapper.Map<ProductModelCreate>(product));
@@ -88,7 +99,6 @@ namespace DemmacsAPIv2.Controllers
             }
             catch (Exception)
             {
-
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Database Failure");
             }
 
